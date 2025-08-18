@@ -22,6 +22,7 @@ const express = require('express');
 
 const ANNOUNCE_CHANNEL_ID = '1406826863849898065';
 const MINIMUM_ROLE_ID = '1406827377916641310';
+const SIGNING_CHANNEL_ID = '1406848591187808257';
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
@@ -118,7 +119,7 @@ client.on(Events.InteractionCreate, async interaction => {
             await db.contractPlayer(member.id, teamName, teamData.emoji);
 
      
-            const signingChannel = await interaction.client.channels.fetch('1406827377916641310');
+            const signingChannel = await interaction.client.channels.fetch(SIGNING_CHANNEL_ID);
             await signingChannel.send(`🚨 **EMERGENCY SIGNING** | <@${member.id}> has joined ${teamData.emoji} \`${teamData.team}\``);
 
             return interaction.update({ 
@@ -165,7 +166,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
             await db.contractPlayer(member.id, teamName, teamData.emoji);
 
-            const signingChannel = await interaction.client.channels.fetch('1406827377916641310');
+            const signingChannel = await interaction.client.channels.fetch(SIGNING_CHANNEL_ID);
             signingChannel.send(`🔔 | <@${member.id}> has joined ${teamData.emoji} \`${teamData.team}\``);
 
             return interaction.update({ content: `✅ Contract signed with ${teamData.emoji} \`${teamData.team}\`.`, components: [], embeds: [] });

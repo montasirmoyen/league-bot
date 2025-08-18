@@ -1,10 +1,10 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const managersDB = require('../utils/managers.js');
 
-const MANAGER_ROLE_ID = '1406827377916641310';
-const ASSISTANT_ROLE_ID = '1406827377916641310';
-const FRIENDLY_ROLE_ID = '1406827377916641310';
-const FRIENDLY_CHANNEL_ID = '1406826863849898065';
+//const MANAGER_ROLE_ID = '1406827377916641310';
+//const ASSISTANT_ROLE_ID = '1406827377916641310';
+const FRIENDLY_ROLE_ID = '1396443727580627086';
+const FRIENDLY_CHANNEL_ID = '1396559656121405590';
 
 const regions = ['GMT', 'BST', 'EST', 'CST', 'PST', 'OTHER'];
 const types = ['DM TO PLAY', 'IN GAME ALREADY'];
@@ -68,12 +68,12 @@ module.exports = {
     const member = interaction.guild.members.cache.get(userId);
     const displayName = member ? member.displayName : user.username;
 
-    let pingString;
-    if (isManager) {
-      pingString = `<@${userId}> <@&${MANAGER_ROLE_ID}> <@&${ASSISTANT_ROLE_ID}> <@&${FRIENDLY_ROLE_ID}>`;
-    } else {
-      pingString = `<@${userId}> <@&${FRIENDLY_ROLE_ID}>`;
-    }
+    //let pingString;
+    //if (isManager) {
+      //pingString = `<@${userId}> <@&${MANAGER_ROLE_ID}> <@&${ASSISTANT_ROLE_ID}> <@&${FRIENDLY_ROLE_ID}>`;
+    //} else {
+      let pingString = `<@${userId}> <@&${FRIENDLY_ROLE_ID}>`;
+   // }
 
     const embed = new EmbedBuilder()
       .setColor(0x5865F2)

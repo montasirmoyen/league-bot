@@ -43,7 +43,7 @@ module.exports = {
 
       await db.releasePlayer(releasee.id);
 
-      const releaseChannel = await interaction.client.channels.fetch('1400085531005685862');
+      const releaseChannel = await interaction.client.channels.fetch('1406848569486606486');
       await releaseChannel.send(`🔔 | **<@${releasee.id}>** has been released from ${contract.emoji} \`${contract.teamName}\``);
 
       await interaction.reply({ content: `✅ <@${releasee.id}> released from ${contract.emoji} \`${contract.teamName}\`.`, ephemeral: true });

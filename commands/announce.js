@@ -9,7 +9,7 @@ const {
   Events
 } = require('discord.js');
 
-const MINIMUM_ROLE_ID = '1406827377916641310';
+const MINIMUM_ROLE_ID = '1396243487292133518'; // director role id
 
 module.exports = {
   data: new SlashCommandBuilder()

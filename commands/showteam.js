@@ -37,9 +37,9 @@ module.exports = {
     for (const person of staff) {
       try {
         const member = await guild.members.fetch(person.id);
-       if (member.roles.cache.some(role => role.name === 'VBL | Manager')) {
+       if (member.roles.cache.some(role => role.name === 'Team Owner')) {
   staffDisplay.managers.push(`<@${person.id}>`);
-} else if (member.roles.cache.some(role => role.name === 'VBL | Assistant Manager')) {
+} else if (member.roles.cache.some(role => role.name === 'Assistant Team Owner')) {
   staffDisplay.assistants.push(`<@${person.id}>`);
 }
       } catch (e) {
