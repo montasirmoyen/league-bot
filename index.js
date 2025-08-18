@@ -210,7 +210,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
       try {
         const announceChannel = await interaction.client.channels.fetch(ANNOUNCE_CHANNEL_ID);
-        await announceChannel.send({ content: '@everyone', embeds: [embed] });
+        await announceChannel.send({ content: 'Official Statement', embeds: [embed] });
         await interaction.reply({ content: '✅ Announcement sent!', ephemeral: true });
       } catch (error) {
         console.error('Error sending announcement:', error);
