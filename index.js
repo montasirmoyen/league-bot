@@ -20,8 +20,8 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const express = require('express');
 
-const ANNOUNCE_CHANNEL_ID = '1406826863849898065';
-const MINIMUM_ROLE_ID = '1406827377916641310';
+const ANNOUNCE_CHANNEL_ID = '1396545990948950220';
+const MINIMUM_ROLE_ID = '1396243487292133518';
 const SIGNING_CHANNEL_ID = '1406848591187808257';
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
