@@ -13,18 +13,17 @@ module.exports = {
     ),
 
   async execute(interaction) {
-    if (!enabled) {
-      return interaction.reply({ content: '⚠️ The transfer window is currently closed.', ephemeral: true });
-    }
-
     const sender = interaction.user.id;
     const signee = interaction.options.getUser('signee');
+
+    if (!enabled && sender !== '340578664439742464') {
+      return interaction.reply({ content: '⚠️ The transfer window is currently closed.', ephemeral: true });
+    }
 
     if (!managers[sender]) {
       return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
     }
 
-   
     if (!managers[sender].canContract) {
       return interaction.reply({ content: '⚠️ You are not authorized to make contracts during this transfer window.', ephemeral: true });
     }
