@@ -34,10 +34,14 @@ module.exports = {
     const position = interaction.options.getString('position');
     const message = interaction.options.getString('message');
 
-    if (!managers[user]) {
-      return interaction.reply({ content: '❌ Only authorized managers can use this command.', ephemeral: true });
-    }
+    const member = await interaction.guild.members.fetch(user);
+    const hasRole = member.roles.cache.some(role => 
+      role.name === 'Team Owner' || role.name === 'Assistant Team Owner'
+    );
 
+    if (!hasRole) {
+      return interaction.reply({ content: '❌ Only Team Owners or Assistant Team Owners can use this command.', ephemeral: true });
+    }
   
     const cooldownAmount = 24 * 60 * 60 * 1000;
     const now = Date.now();
