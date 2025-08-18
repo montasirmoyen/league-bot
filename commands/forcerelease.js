@@ -18,14 +18,12 @@ module.exports = {
     const sender = interaction.user.id;
 
     if (!interaction.member.permissions.has(PermissionFlagsBits.Administrator)) {
-      return interaction.reply({ content: '❌ You need Administrator permissions to use this command.', ephemeral: true });
+      return interaction.reply({ content: '❌ You need server administrator permissions to use this command.', ephemeral: true });
     }
 
     if (managers[releasee.id]) {
       return interaction.reply({ content: '❌ You cannot force release another manager.', ephemeral: true });
     }
-
-   
 
     if (releasee.bot) {
       return interaction.reply({ content: '❌ You cannot force release bots.', ephemeral: true });

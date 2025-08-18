@@ -13,10 +13,16 @@ module.exports = {
         .setRequired(true)
         .addChoices(
           { name: 'GK', value: 'GK' },
+          { name: 'LB', value: 'LB' },
+          { name: 'RB', value: 'RB' },
           { name: 'CB', value: 'CB' },
           { name: 'CDM', value: 'CDM' },
           { name: 'CM', value: 'CM' },
+          { name: 'RM', value: 'RM' },
+          { name: 'LM', value: 'LM' },
           { name: 'CAM', value: 'CAM' },
+          { name: 'RW', value: 'RW' },
+          { name: 'LW', value: 'LW' },
           { name: 'CF', value: 'CF' },
           { name: 'ST', value: 'ST' }
         )

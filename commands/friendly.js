@@ -10,7 +10,7 @@ const regions = ['GMT', 'BST', 'EST', 'CST', 'PST', 'OTHER'];
 const types = ['DM TO PLAY', 'IN GAME ALREADY'];
 
 const cooldowns = new Map();
-const COOLDOWN_TIME = 10 * 60 * 1000;
+const COOLDOWN_TIME = 30 * 60 * 1000;
 
 module.exports = {
   data: new SlashCommandBuilder()

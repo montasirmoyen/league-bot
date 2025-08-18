@@ -26,18 +26,7 @@ module.exports = {
       name: '👥 Player Commands',
       value: 
         '`/freeagent` - Register yourself as a free agent\n' +
-        '• Select your position and region\n' +
-        '• 24-hour cooldown between uses\n' +
-        '• Cannot be used if already contracted\n\n' +
-
-        '`/friendly` - Look for friendly matches\n' +
-        '• Choose region and match type\n' +
-        '• 10-minute cooldown between uses\n' +
-        '• Upload image if "IN GAME ALREADY"\n\n' +
-
-        '`/help` - Display this help menu\n' +
-        '• Shows all available commands\n' +
-        '• Displays different info for managers vs players',
+        '`/friendly` - Look for friendly matches\n',
       inline: false
     });
 
@@ -48,54 +37,25 @@ module.exports = {
         name: '👔 Manager Commands',
         value: 
           '`/contract @user` - Send a contract to a player\n' +
-          '• Send contracts to free agents\n' +
-          '• Players can accept or decline\n' +
-          '• Cannot contract other managers or bots\n\n' +
-
+          '`/emergencycontract @user` - Urgent signing of a player if allowed\n' +
           '`/scout [position] [message]` - Scout for players\n' +
-          '• Post scouting messages for specific positions\n' +
-          '• Include custom message describing what you need\n' +
-          '• Shows your team info in the post\n' +
-          '• 24-hour cooldown between uses\n\n' +
-
           '`/release @user` - Release a player from your team\n' +
-          '• Release players contracted to your team\n' +
-          '• Cannot release managers or uncontracted players\n' +
-          '• Announces release in dedicated channel\n\n' +
-
-          '`/forcerelease @user` - Force release a player *(Director+ Only)*\n' +
-          '• Force releases a player from their team\n' +
-          '• Bypasses manager restrictions\n' +
-          '• Director command only\n\n' +
-
-          '`/friendly` - Look for friendly matches\n' +
-          '• Enhanced display with team info\n' +
-          '• Pings additional manager roles\n' +
-          '• Same functionality as player version',
+          '`/forcerelease @user` - Force release a player *(Admin Only)*\n' +
+          '`/friendly` - Ping other players who are looking for a friendly\n',
         inline: false
       });
 
       embed.addFields({
-        name: '🏆 Your Team',
+        name: '🏆 You Manage',
         value: `${teamData.emoji} \`${teamData.team}\``,
         inline: true
-      });
-    } else {
-      embed.addFields({
-        name: '👔 Manager Commands',
-        value: 
-          '`/contract @user` - Send contracts to players *(Managers Only)*\n' +
-          '`/scout [position] [message]` - Scout for players *(Managers Only)*\n' +
-          '`/release @user` - Release players from team *(Managers Only)*\n' +
-          '`/forcerelease @user` - Force release players *(Director+)*',
-        inline: false
       });
     }
 
     // gen
     embed.addFields({
       name: '📍 Available Positions',
-      value: 'GK, CB, CDM, CM, CAM, CF, ST',
+      value: 'GK, RB, LB, CB, CDM, CM, RM, LM, CAM, LW, RW, CF, ST',
       inline: true
     });
 
