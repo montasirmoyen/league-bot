@@ -12,6 +12,7 @@ module.exports = {
         .setDescription('Position you are scouting for')
         .setRequired(true)
         .addChoices(
+          { name: 'ALL', value: 'ALL' },
           { name: 'GK', value: 'GK' },
           { name: 'LB', value: 'LB' },
           { name: 'RB', value: 'RB' },
