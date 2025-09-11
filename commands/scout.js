@@ -42,7 +42,7 @@ module.exports = {
     const teamData = managers[user];
 
     if (teamData) {
-      return;
+return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
     }
 
     const isAssistant = Object.values(managers).some(m => m.assistant === user);
