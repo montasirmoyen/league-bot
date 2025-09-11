@@ -7,7 +7,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('scout')
     .setDescription('Scout for players in a specific position')
-    .addStringOption(option => 
+    .addStringOption(option =>
       option.setName('position')
         .setDescription('Position you are scouting for')
         .setRequired(true)
@@ -39,19 +39,18 @@ module.exports = {
     const position = interaction.options.getString('position');
     const message = interaction.options.getString('message');
 
-    const isManager = managers[user];
-    if (!isManager) {
-      const hasAssistant = isManager.assistant;
-        if (hasAssistant) {
-          if (!isManager.assistant[user]) {
-            return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
-          }
-        } else {
-          return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
-        }
+    const teamData = managers[user];
+
+    if (teamData) {
+      return;
+    }
+
+    const isAssistant = Object.values(managers).some(m => m.assistant === user);
+
+    if (!isAssistant) {
       return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
     }
-  
+
     const cooldownAmount = 24 * 60 * 60 * 1000;
     const now = Date.now();
 
@@ -63,21 +62,18 @@ module.exports = {
         const hours = Math.floor(timeLeft / 3600);
         const minutes = Math.floor((timeLeft % 3600) / 60);
 
-        return interaction.reply({ 
-          content: `⏰ You're on cooldown! You can scout again in ${hours}h ${minutes}m.`, 
-          ephemeral: true 
+        return interaction.reply({
+          content: `⏰ You're on cooldown! You can scout again in ${hours}h ${minutes}m.`,
+          ephemeral: true
         });
       }
     }
 
     cooldowns.set(user, now);
 
-
     setTimeout(() => {
       cooldowns.delete(user);
     }, cooldownAmount);
-
-    const teamData = managers[user];
 
     const embed = new EmbedBuilder()
       .setTitle('🔍 Player Scout')
@@ -92,8 +88,8 @@ module.exports = {
         iconURL: interaction.user.displayAvatarURL()
       })
       .setFooter({
-          text: '[PSL] Pure Soccer League - ' + new Date().toLocaleString(),
-          iconURL: 'https://media.discordapp.net/attachments/1396248400122613861/1415814787044081805/PSL_LOGO_WHITE.png?ex=68c493c5&is=68c34245&hm=bdc17b94895be0ce7e1591c3d284af2ae772dbc9e692fac34e1114b8be73ea52&=&format=webp&quality=lossless&width=1440&height=1440'
+        text: '[PSL] Pure Soccer League - ' + new Date().toLocaleString(),
+        iconURL: 'https://media.discordapp.net/attachments/1396248400122613861/1415814787044081805/PSL_LOGO_WHITE.png?ex=68c493c5&is=68c34245&hm=bdc17b94895be0ce7e1591c3d284af2ae772dbc9e692fac34e1114b8be73ea52&=&format=webp&quality=lossless&width=1440&height=1440'
       })
       .setColor(0x00ff00)
       .setTimestamp();
