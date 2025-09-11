@@ -70,7 +70,6 @@ module.exports = {
       }
     }
 
-
     cooldowns.set(user, now);
 
 

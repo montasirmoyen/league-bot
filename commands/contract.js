@@ -16,7 +16,7 @@ module.exports = {
     const sender = interaction.user.id;
     const signee = interaction.options.getUser('signee');
 
-    if (!enabled && sender !== '340578664439742464') {
+    if (!enabled) {
       return interaction.reply({ content: '⚠️ The transfer window is currently closed.', ephemeral: true });
     }
 
