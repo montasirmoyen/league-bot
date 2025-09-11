@@ -100,11 +100,18 @@ client.on(Events.InteractionCreate, async interaction => {
           return interaction.reply({ content: "❌ You can't respond to someone else's contract!", ephemeral: true });
         }
 
-        if (!managers[managerId]) {
-          return interaction.update({ content: '❌ Invalid manager data.', components: [], embeds: [] });
-        }
+        const teamData = managers[user];
 
-        const teamData = managers[managerId];
+    if (teamData) {
+      return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
+    }
+
+    const isAssistant = Object.values(managers).some(m => m.assistant === user);
+
+    if (!isAssistant) {
+      return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
+    }
+
         const member = interaction.user;
 
         if (emergencyAction === 'accept') {
@@ -120,10 +127,10 @@ client.on(Events.InteractionCreate, async interaction => {
 
      
             const signingChannel = await interaction.client.channels.fetch(SIGNING_CHANNEL_ID);
-            await signingChannel.send(`🚨 **EMERGENCY SIGNING** | <@${member.id}> has joined ${teamData.emoji} \`${teamData.team}\``);
+            await signingChannel.send(`🚨 **EMERGENCY SIGNING** | <@${member.id}> has joined **${teamData.team}**`);
 
             return interaction.update({ 
-              content: `✅ Emergency contract signed with ${teamData.emoji} \`${teamData.team}\`.`, 
+              content: `✅ Emergency contract signed with **${teamData.team}**.`, 
               components: [], 
               embeds: [] 
             });
@@ -150,26 +157,32 @@ client.on(Events.InteractionCreate, async interaction => {
           return interaction.reply({ content: "❌ You can't respond to someone else's contract!", ephemeral: true });
         }
 
-        if (!managers[managerId]) {
-          return interaction.update({ content: '❌ Invalid manager data.', components: [], embeds: [] });
-        }
+        const teamData = managers[user];
 
-        const teamData = managers[managerId];
+    if (teamData) {
+      return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
+    }
+
+    const isAssistant = Object.values(managers).some(m => m.assistant === user);
+
+    if (!isAssistant) {
+      return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
+    }
         const member = interaction.user;
 
         if (action === 'accept') {
           try {
             const row = await db.getContractedTeam(member.id);
             if (row) {
-              return interaction.update({ content: `❌ You are already contracted to ${row.emoji} \`${row.teamName}\`.`, components: [], embeds: [] });
+              return interaction.update({ content: `❌ You are already contracted to **${row.team}**.`, components: [], embeds: [] });
             }
 
             await db.contractPlayer(member.id, teamName, teamData.emoji);
 
             const signingChannel = await interaction.client.channels.fetch(SIGNING_CHANNEL_ID);
-            signingChannel.send(`🔔 | <@${member.id}> has joined ${teamData.emoji} \`${teamData.team}\``);
+            signingChannel.send(`🔔 | <@${member.id}> has joined **${teamData.team}**`);
 
-            return interaction.update({ content: `✅ Contract signed with ${teamData.emoji} \`${teamData.team}\`.`, components: [], embeds: [] });
+            return interaction.update({ content: `✅ Contract signed with **${teamData.team}**.`, components: [], embeds: [] });
 
           } catch (error) {
             console.error('Database error:', error);
