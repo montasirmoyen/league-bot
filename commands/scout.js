@@ -39,15 +39,18 @@ module.exports = {
     const position = interaction.options.getString('position');
     const message = interaction.options.getString('message');
 
-    const isManager = !!managers[user];
-const isAssistant = Object.values(managers).some(m => m.assistant === user);
-
-if (!isManager && !isAssistant) {
-  return interaction.reply({
-    content: '❌ Only authorized managers (or their assistants) can use this command.',
-    ephemeral: true
-  });
-}
+    const isManager = managers[user];
+    if (!isManager) {
+      const hasAssistant = isManager.assistant;
+        if (hasAssistant) {
+          if (!isManager.assistant[user]) {
+            return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
+          }
+        } else {
+          return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
+        }
+      return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
+    }
   
     const cooldownAmount = 24 * 60 * 60 * 1000;
     const now = Date.now();
