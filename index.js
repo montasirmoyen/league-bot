@@ -102,13 +102,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
         const teamData = managers[user];
 
-    if (teamData) {
-      return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
-    }
-
-    const isAssistant = Object.values(managers).some(m => m.assistant === user);
-
-    if (!isAssistant) {
+    if (!teamData) {
       return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
     }
 
@@ -159,13 +153,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
         const teamData = managers[user];
 
-    if (teamData) {
-      return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
-    }
-
-    const isAssistant = Object.values(managers).some(m => m.assistant === user);
-
-    if (!isAssistant) {
+    if (!teamData) {
       return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
     }
         const member = interaction.user;

@@ -1,5 +1,5 @@
 module.exports = {
-  enabled: true, 
+  enabled: true,
   managers: {
 
     //
@@ -50,7 +50,7 @@ module.exports = {
     //
     // la liga
     //
-    
+
     '1071513213662920796': {
       team: 'Athletic Bilbao',
       emoji: '<:pfc:1406860312703144055>',
@@ -74,8 +74,12 @@ module.exports = {
     '1115088887610613771': {
       team: 'Real Madrid',
       emoji: '<:pfc:1406860312703144055>',
-      assistant: '977291969908838440',
       canContract: false
+    },
+    '977291969908838440': { // assistant
+      team: 'Real Madrid',
+      emoji: '<:pfc:1406860312703144055>',
+      canContract: true
     },
     '948029997455642704': {
       team: 'Real Oviedo',
@@ -120,7 +124,11 @@ module.exports = {
     '1307887257302335560': {
       team: 'Fiorentina',
       emoji: '<:pfc:1406860312703144055>',
-      assistant: '340578664439742464',
+      canContract: true
+    },
+    '340578664439742464': { // assistant
+      team: 'Fiorentina',
+      emoji: '<:pfc:1406860312703144055>',
       canContract: true
     },
     '1254189304742150219': {
