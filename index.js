@@ -231,13 +231,19 @@ client.on(Events.InteractionCreate, async interaction => {
       }
     }
   } catch (err) {
-    console.error('Error handling interaction:', err);
-    if (interaction.replied || interaction.deferred) {
-      await interaction.followUp({ content: '❌ There was an error processing this interaction.', ephemeral: true });
-    } else {
-      await interaction.reply({ content: '❌ There was an error processing this interaction.', ephemeral: true });
-    }
+  console.error('Error handling interaction:', err);
+
+  const errorMessage = {
+    content: `❌ There was an error:\n\`\`\`${err.stack || err.message}\`\`\``,
+    ephemeral: true
+  };
+
+  if (interaction.replied || interaction.deferred) {
+    await interaction.followUp(errorMessage);
+  } else {
+    await interaction.reply(errorMessage);
   }
+}
 });
 
 client.login(process.env.TOKEN);
