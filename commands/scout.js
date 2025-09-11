@@ -75,7 +75,7 @@ module.exports = {
         `**${teamData.team}** is scouting for players!\n\n` +
         `📌 **Position**: ${position}\n\n` +
         `💬 **Message**:\n${message}\n\n` +
-        `*If you're interested and available, feel free to DM the manager!*`
+        `*If you're interested and available, feel free to DM <@${user}>!*`
       )
       .setAuthor({
         name: interaction.user.displayName,

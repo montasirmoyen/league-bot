@@ -151,10 +151,10 @@ client.on(Events.InteractionCreate, async interaction => {
           return interaction.reply({ content: "❌ You can't respond to someone else's contract!", ephemeral: true });
         }
 
-        const teamData = managers[user];
+        const teamData = managers[managerId];
 
     if (!teamData) {
-      return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
+      return interaction.reply({ content: '❌ Team data is nil.', ephemeral: true });
     }
         const member = interaction.user;
 
