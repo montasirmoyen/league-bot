@@ -48,15 +48,15 @@ module.exports = {
         .setDescription(
           `**EMERGENCY SIGNING**\n` +
           `By accepting this emergency contract, <@${player.id}>, you agree to join the team immediately.\n\n` +
-          `${existingContract ? `⚠️ **Current Team**: ${existingContract.emoji} \`${existingContract.teamName}\`\n` : ''}` +
-          `🆕 **New Team**: ${teamData.emoji} \`${teamData.team}\`\n\n` +
+          `${existingContract ? `⚠️ **Current Team**: *${existingContract.teamName}**\n` : ''}` +
+          `🆕 **New Team**: **${teamData.team}**\n\n` +
           `📋 **Emergency Reason**\n\`${reason}\`\n\n` +
           `🖊️ **Authorized By**\n<@${sender}>\n\n` +
           `⚠️ **Note**: This is an emergency signing that may override existing contracts.`
         )
         .setFooter({
           text: '[PSL] Pure Soccer League - ' + new Date().toLocaleString(),
-          iconURL: 'https://media.discordapp.net/attachments/1406063047197327513/1406828600073785425/PSL_LOGO_WHITE.png?ex=68a3e2bb&is=68a2913b&hm=747f3479aa0c7b4ae40bd5f14378d0f78c93132eb39a909ae3ef912b7f232311&=&format=webp&quality=lossless&width=650&height=650'
+          iconURL: 'https://media.discordapp.net/attachments/1396248400122613861/1415814787044081805/PSL_LOGO_WHITE.png?ex=68c493c5&is=68c34245&hm=bdc17b94895be0ce7e1591c3d284af2ae772dbc9e692fac34e1114b8be73ea52&=&format=webp&quality=lossless&width=1440&height=1440'
         })
         .setColor(0xff6b6b); 
 

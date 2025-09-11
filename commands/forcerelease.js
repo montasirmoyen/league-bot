@@ -38,9 +38,9 @@ module.exports = {
       await db.releasePlayer(releasee.id);
 
       const releaseChannel = await interaction.client.channels.fetch('1406848569486606486');
-      releaseChannel.send(`⚡ | **<@${releasee.id}>** has been **FORCE RELEASED** from ${row.emoji} \`${row.teamName}\` by <@${sender}>`);
+      releaseChannel.send(`⚡ | **<@${releasee.id}>** has been **FORCE RELEASED** from **${row.teamName}** by <@${sender}>`);
 
-      await interaction.reply({ content: `✅ <@${releasee.id}> force released from ${row.emoji} \`${row.teamName}\`.`, ephemeral: true });
+      await interaction.reply({ content: `✅ <@${releasee.id}> force released from **${row.teamName}**`, ephemeral: true });
     } catch (err) {
       console.error('Database error:', err);
       return interaction.reply({ content: '⚠️ Database error occurred.', ephemeral: true });
