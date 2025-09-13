@@ -36,7 +36,12 @@ module.exports = {
       emoji: '<:pfc:1406860312703144055>',
       canContract: false
     },
-    '1349755740503539822': {
+    '1357034215660716192': {
+      team: 'Newcastle United',
+      emoji: '<:pfc:1406860312703144055>',
+      canContract: false
+    },
+    '1349755740503539822': { // assistant
       team: 'Newcastle United',
       emoji: '<:pfc:1406860312703144055>',
       canContract: false

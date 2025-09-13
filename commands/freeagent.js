@@ -56,7 +56,7 @@ module.exports = {
       return interaction.reply({ content: '❌ Managers cannot register as free agents.', ephemeral: true });
     }
 
-    const cooldownAmount = 24 * 60 * 60 * 1000; 
+    const cooldownAmount = 6 * 60 * 60 * 1000; 
     const now = Date.now();
 
     if (cooldowns.has(userId)) {

@@ -46,7 +46,7 @@ module.exports = {
       return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
     }
 
-    const cooldownAmount = 24 * 60 * 60 * 1000;
+    const cooldownAmount = 3 * 60 * 60 * 1000;
     const now = Date.now();
 
     if (cooldowns.has(user)) {
