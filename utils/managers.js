@@ -31,6 +31,11 @@ module.exports = {
       emoji: '<:pfc:1406860312703144055>',
       canContract: false
     },
+    '1275418947042414718': { // assistant
+      team: 'Manchester City',
+      emoji: '<:pfc:1406860312703144055>',
+      canContract: false
+    },
     '1304126523875397653': {
       team: 'Manchester United',
       emoji: '<:pfc:1406860312703144055>',
@@ -41,7 +46,7 @@ module.exports = {
       emoji: '<:pfc:1406860312703144055>',
       canContract: false
     },
-    '1349755740503539822': { // assistant
+    '1301121637927620664': { // assistant
       team: 'Newcastle United',
       emoji: '<:pfc:1406860312703144055>',
       canContract: false
@@ -123,6 +128,11 @@ module.exports = {
     },
     '811357485993689098': {
       team: 'Como',
+      emoji: '<:pfc:1406860312703144055>',
+      canContract: false
+    },
+    '1099604811227340872': {
+      team: 'Como (Youth)',
       emoji: '<:pfc:1406860312703144055>',
       canContract: false
     },
