@@ -6,7 +6,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('contract')
     .setDescription('Send a contract to a player')
-    .addUserOption(option =>
+    .addUserOption(option => 
       option.setName('signee')
         .setDescription('User to send the contract to')
         .setRequired(true)
@@ -16,26 +16,16 @@ module.exports = {
     const sender = interaction.user.id;
     const signee = interaction.options.getUser('signee');
 
-    const guild = interaction.client.guilds.cache.get('1399571290108723200');
-    const member = guild?.members.cache.get(interaction.user.id)
-      || await guild?.members.fetch(interaction.user.id).catch(() => null);
-
-    if (!member?.roles.cache.has('1417919425398440088')) {
-      return interaction.reply({
-        content: '⚠️ The transfer window is currently closed.',
-        ephemeral: true
-      });
+    if (!enabled) {
+      return interaction.reply({ content: '⚠️ The transfer window is currently closed.', ephemeral: true });
     }
 
-    const guild2 = interaction.client.guilds.cache.get('1399571290108723200');
-    const member2 = guild2?.members.cache.get(sender)
-      || await guild2?.members.fetch(sender).catch(() => null);
+    if (!managers[sender]) {
+      return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
+    }
 
-    if (member2?.roles.cache.has('1417920707534524476')) {
-      return interaction.reply({
-        content: '⚠️ You have the block contract role, you cannot use this command at this momenet.',
-        ephemeral: true
-      });
+    if (!managers[sender].canContract) {
+      return interaction.reply({ content: '⚠️ You are not authorized to make contracts during this transfer window.', ephemeral: true });
     }
 
     if (managers[signee.id]) {

@@ -116,9 +116,7 @@ client.on(Events.InteractionCreate, async interaction => {
               console.log(`Emergency signing: ${member.id} being moved from ${existingContract.teamName} to ${teamName}`);
             }
 
-
             await db.contractPlayer(member.id, teamName, teamData.emoji);
-
 
             const signingChannel = await interaction.client.channels.fetch(SIGNING_CHANNEL_ID);
             await signingChannel.send(`🚨 **EMERGENCY SIGNING** | <@${member.id}> has joined **${teamData.team}**`);
