@@ -31,16 +31,11 @@ module.exports = {
       emoji: '<:pfc:1406860312703144055>',
       canContract: true
     },
-    '1222672305319186488': {
-      team: 'Manchester City',
-      emoji: '<:pfc:1406860312703144055>',
-      canContract: true
-    },
-    '1275418947042414718': { // assistant
-      team: 'Manchester City',
-      emoji: '<:pfc:1406860312703144055>',
-      canContract: true
-    },
+    //'1222672305319186488': {
+    //team: 'Manchester City',
+    // emoji: '<:pfc:1406860312703144055>',
+    //canContract: true
+    // },
     '1304126523875397653': {
       team: 'Manchester United',
       emoji: '<:pfc:1406860312703144055>',
@@ -126,7 +121,7 @@ module.exports = {
       emoji: '<:pfc:1406860312703144055>',
       canContract: true
     },
-     '1357057113561628773': {
+    '1357057113561628773': {
       team: 'AS Roma', // assistant
       emoji: '<:pfc:1085996901184323625>',
       canContract: true
@@ -161,7 +156,12 @@ module.exports = {
       emoji: '<:pfc:1406860312703144055>',
       canContract: true
     },
-    '957975240699416647': {
+    '1222672305319186488': {
+      team: 'Juventus',
+      emoji: '<:pfc:1406860312703144055>',
+      canContract: true
+    },
+    '1275418947042414718': { // assistant
       team: 'Juventus',
       emoji: '<:pfc:1406860312703144055>',
       canContract: true
