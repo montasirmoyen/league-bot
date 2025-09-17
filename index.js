@@ -47,11 +47,11 @@ mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('✅ Connected to MongoDB'))
-.catch(err => {
-  console.error('❌ MongoDB connection error:', err);
-  process.exit(1);
-});
+  .then(() => console.log('✅ Connected to MongoDB'))
+  .catch(err => {
+    console.error('❌ MongoDB connection error:', err);
+    process.exit(1);
+  });
 
 (async () => {
   try {
@@ -92,41 +92,41 @@ client.on(Events.InteractionCreate, async interaction => {
 
     else if (interaction.isButton()) {
       const customIdParts = interaction.customId.split('_');
-      
+
       if (customIdParts[0] === 'emergency') {
         const [, emergencyAction, managerId, teamName, signeeId] = customIdParts;
-        
+
         if (interaction.user.id !== signeeId) {
           return interaction.reply({ content: "❌ You can't respond to someone else's contract!", ephemeral: true });
         }
 
         const teamData = managers[user];
 
-    if (!teamData) {
-      return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
-    }
+        if (!teamData) {
+          return interaction.reply({ content: '❌ You are not an authorized manager.', ephemeral: true });
+        }
 
         const member = interaction.user;
 
         if (emergencyAction === 'accept') {
           try {
             const existingContract = await db.getContractedTeam(member.id);
-            
+
             if (existingContract) {
               console.log(`Emergency signing: ${member.id} being moved from ${existingContract.teamName} to ${teamName}`);
             }
 
-    
+
             await db.contractPlayer(member.id, teamName, teamData.emoji);
 
-     
+
             const signingChannel = await interaction.client.channels.fetch(SIGNING_CHANNEL_ID);
             await signingChannel.send(`🚨 **EMERGENCY SIGNING** | <@${member.id}> has joined **${teamData.team}**`);
 
-            return interaction.update({ 
-              content: `✅ Emergency contract signed with **${teamData.team}**.`, 
-              components: [], 
-              embeds: [] 
+            return interaction.update({
+              content: `✅ Emergency contract signed with **${teamData.team}**.`,
+              components: [],
+              embeds: []
             });
 
           } catch (error) {
@@ -136,26 +136,26 @@ client.on(Events.InteractionCreate, async interaction => {
         }
 
         if (emergencyAction === 'decline') {
-          return interaction.update({ 
-            content: `❌ | <@${member.id}> has declined the emergency contract.`, 
-            components: [], 
-            embeds: [] 
+          return interaction.update({
+            content: `❌ | <@${member.id}> has declined the emergency contract.`,
+            components: [],
+            embeds: []
           });
         }
       }
-      
+
       else {
         const [action, managerId, teamName, signeeId] = customIdParts;
-        
+
         if (interaction.user.id !== signeeId) {
           return interaction.reply({ content: "❌ You can't respond to someone else's contract!", ephemeral: true });
         }
 
         const teamData = managers[managerId];
 
-    if (!teamData) {
-      return interaction.reply({ content: '❌ Team data is nil.', ephemeral: true });
-    }
+        if (!teamData) {
+          return interaction.reply({ content: '❌ Team data is nil.', ephemeral: true });
+        }
         const member = interaction.user;
 
         if (action === 'accept') {
@@ -219,19 +219,19 @@ client.on(Events.InteractionCreate, async interaction => {
       }
     }
   } catch (err) {
-  console.error('Error handling interaction:', err);
+    console.error('Error handling interaction:', err);
 
-  const errorMessage = {
-    content: `❌ There was an error:\n\`\`\`${err.stack || err.message}\`\`\``,
-    ephemeral: true
-  };
+    const errorMessage = {
+      content: `❌ There was an error:\n\`\`\`${err.stack || err.message}\`\`\``,
+      ephemeral: true
+    };
 
-  if (interaction.replied || interaction.deferred) {
-    await interaction.followUp(errorMessage);
-  } else {
-    await interaction.reply(errorMessage);
+    if (interaction.replied || interaction.deferred) {
+      await interaction.followUp(errorMessage);
+    } else {
+      await interaction.reply(errorMessage);
+    }
   }
-}
 });
 
 client.login(process.env.TOKEN);
