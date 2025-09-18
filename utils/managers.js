@@ -31,11 +31,16 @@ module.exports = {
       emoji: '<:pfc:1406860312703144055>',
       canContract: true
     },
-    //'1222672305319186488': {
-    //team: 'Manchester City',
-    // emoji: '<:pfc:1406860312703144055>',
-    //canContract: true
-    // },
+    '1236676696741117962': {
+      team: 'Manchester City',
+      emoji: '<:pfc:1406860312703144055>',
+      canContract: true
+    },
+    '1240704317879750799': {
+      team: 'Manchester City', // assistant
+      emoji: '<:pfc:1406860312703144055>',
+      canContract: true
+    },
     '1304126523875397653': {
       team: 'Manchester United',
       emoji: '<:pfc:1406860312703144055>',
