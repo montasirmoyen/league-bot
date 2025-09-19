@@ -6,7 +6,7 @@ module.exports = {
     // premier league
     //
 
-    '1288921157763862573': { // discord user id of the manager
+    '1003010632926384148': { // discord user id of the manager
       team: 'Arsenal', // team name
       emoji: '<:pfc:1406860312703144055>', // team emoji id
       canContract: true // whether the manager can contract players or not
