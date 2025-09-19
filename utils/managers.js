@@ -11,6 +11,11 @@ module.exports = {
       emoji: '<:pfc:1406860312703144055>', // team emoji id
       canContract: true // whether the manager can contract players or not
     },
+    '1209550209613561946': { 
+      team: 'Arsenal', // assistant
+      emoji: '<:pfc:1406860312703144055>',
+      canContract: true 
+    },
     '1322653320250392627': {
       team: 'Crystal Palace',
       emoji: '<:pfc:1406860312703144055>',
