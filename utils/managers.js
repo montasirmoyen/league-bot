@@ -76,6 +76,11 @@ module.exports = {
       emoji: '<:pfc:1406860312703144055>',
       canContract: true
     },
+    '824728215548329984': {
+      team: 'Athletic Bilbao', // a
+      emoji: '<:pfc:1406860312703144055>',
+      canContract: false
+    },
     '1071397626114756618': {
       team: 'Atletico Madrid',
       emoji: '<:pfc:1406860312703144055>',
@@ -131,7 +136,7 @@ module.exports = {
       emoji: '<:pfc:1406860312703144055>',
       canContract: true
     },
-    '1357057113561628773': {
+    '1085996901184323625': {
       team: 'AS Roma', // assistant
       emoji: '<:pfc:1085996901184323625>',
       canContract: true
