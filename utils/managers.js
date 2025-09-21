@@ -79,7 +79,7 @@ module.exports = {
     '824728215548329984': {
       team: 'Athletic Bilbao', // a
       emoji: '<:pfc:1406860312703144055>',
-      canContract: false
+      canContract: true
     },
     '1071397626114756618': {
       team: 'Atletico Madrid',
